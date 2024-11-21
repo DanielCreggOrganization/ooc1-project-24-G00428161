@@ -5,8 +5,16 @@ public class Dog {
     private int microchipNumber; // Unique ID
     private String name;
     private float breed;
-    private boolean isHungry; // true if hungry, false if not//
+    private boolean isHungry; // true if hungry, false if not
 
+    //Constructor
+    public Dog (int microchipNumber , String name , float breed , boolean isHungry){
+        this.microchipNumber = microchipNumber;
+        this.name = name;
+        this.breed = breed;
+        this.isHungry = isHungry;
+
+    }
     // Getter and Setter Methods
     public int getmicrochipNumber() {
         return this.microchipNumber;
