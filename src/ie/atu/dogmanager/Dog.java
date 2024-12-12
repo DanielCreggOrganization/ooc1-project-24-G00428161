@@ -1,20 +1,21 @@
 package ie.atu.dogmanager;
 
-public class Dog {
+public class Dog extends Animal {
     // Instanve Variables //
     private int microchipNumber; // Unique ID
     private String breed;
     private float weight;
     private boolean isHungry; // true if hungry, false if not
 
-    //Constructor
-    public Dog (int microchipNumber , String name , float breed , boolean isHungry){
+    // Constructor
+    public Dog(int microchipNumber, String name, float breed, boolean isHungry) {
         this.microchipNumber = microchipNumber;
         this.breed = name;
         this.weight = weight;
         this.isHungry = isHungry;
 
     }
+
     // Getter and Setter Methods
     public int getmicrochipNumber() {
         return this.microchipNumber;
@@ -46,6 +47,12 @@ public class Dog {
 
     public void setisHungry(boolean isHungry) {
         this.isHungry = isHungry;
+    }
+
+    // Overridden method from Clock interface
+    @Override
+    public String showColour() {
+        return "Black";
     }
 
 }
