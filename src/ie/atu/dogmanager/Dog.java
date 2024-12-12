@@ -3,15 +3,15 @@ package ie.atu.dogmanager;
 public class Dog {
     // Instanve Variables //
     private int microchipNumber; // Unique ID
-    private String name;
-    private float breed;
+    private String breed;
+    private float weight;
     private boolean isHungry; // true if hungry, false if not
 
     //Constructor
     public Dog (int microchipNumber , String name , float breed , boolean isHungry){
         this.microchipNumber = microchipNumber;
-        this.name = name;
-        this.breed = breed;
+        this.breed = name;
+        this.weight = weight;
         this.isHungry = isHungry;
 
     }
@@ -20,12 +20,12 @@ public class Dog {
         return this.microchipNumber;
     }
 
-    public String getname() {
-        return this.name;
+    public String getbreed() {
+        return this.breed;
     }
 
-    public float getbreed() {
-        return this.breed;
+    public float getweight() {
+        return this.weight;
     }
 
     public boolean getisHungry() {
@@ -36,12 +36,12 @@ public class Dog {
         this.microchipNumber = microchipNumber;
     }
 
-    public void setname(String name) {
-        this.name = name;
+    public void setname(String breed) {
+        this.breed = breed;
     }
 
-    public void setbreed(float breed) {
-        this.breed = breed;
+    public void setbreed(float weight) {
+        this.weight = weight;
     }
 
     public void setisHungry(boolean isHungry) {

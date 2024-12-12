@@ -6,9 +6,14 @@ public class Main {
 
     public static void main(String[] args) {
 
+        //Create Dog Manager Object
+        DogManager dogManagerObject = new DogManager();
+
         // Instantiate Scanner class so we can start reading user input
         Scanner userInput = new Scanner(System.in);
         int userSelection = 0; // Used to store user Menu option selection
+
+        //Create infinite while loop to display Menu
 
         while (true) {
             // Display Menu to console
@@ -25,6 +30,24 @@ public class Main {
 
             // Store user Menu option selection
             userSelection = userInput.nextInt();
+
+            // If user selects option 1
+            if (userSelection == 1){
+
+                System.out.println("Enter Dog Microchip Number");
+                int microchipNumber = userInput.nextInt();
+                System.out.println("Enter Dog Breed");
+                String breed = userInput.next();
+                System.out.println("Enter Dog weight");
+                float weight = userInput.nextFloat();
+                System.out.println("Is Dog Hungry? (true/false):");
+                boolean isHungry = userInput.nextBoolean();
+
+
+                //Create Watch Object
+                Dog myDog = new Dog(microchipNumber, breed, weight, isHungry);
+                dogManagerObject.addDog(myDog);
+            }
 
             if (userSelection == 5) { // Quit
 
