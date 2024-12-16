@@ -40,19 +40,56 @@ public class Main {
                 String breed = userInput.next();
                 System.out.println("Enter Dog weight (Kg)");
                 float weight = userInput.nextFloat();
-                System.out.println("Is the Dog Hungry? (true/false):");
+                System.out.println("Entered Weight: " + weight);  // Debug message
+                System.out.println("Is the Dog Hungry? (True/False):");
                 boolean isHungry = userInput.nextBoolean();
 
-                // Create Watch Object
+                // Create Dog Object
                 Dog myDog = new Dog(microchipNumber, breed, weight, isHungry);
+                System.out.println("Dog Created with Weight: " + myDog.getweight());
                 dogManagerObject.addDog(myDog);
-            } // end if 
+            } 
+
+              // If user selects option 2 (Delete Dog)
+              if (userSelection == 2) {
+                System.out.println("Enter Dog Microchip Number to delete:");
+                int microchipNumberToDelete = userInput.nextInt(); // Get the microchip number from the user
+
+                // Delete the dog using DogManager's delete method
+                boolean success = dogManagerObject.deleteDog(microchipNumberToDelete);
+
+                if (success) {
+                    System.out.println("Dog with microchip number " + microchipNumberToDelete + " has been deleted.");
+                } else {
+                    System.out.println("No dog found with Microchip Number: " + microchipNumberToDelete);
+                }
+            }
 
              // If user selects option 3
              if (userSelection == 3) {
                 // Display total number of Dog objects
                 System.out.println("Total Number of Dogs: " + dogManagerObject.totalDogs());
             }
+            if (userSelection == 4) {  // Search for Dog by ID
+                System.out.println("Enter Dog Microchip Number to search:");
+                int searchId = userInput.nextInt(); // Get the microchip number from the user
+            
+                // Search for the dog using DogManager's search method
+                Dog foundDog = dogManagerObject.searchDogById(searchId);
+            
+                if (foundDog != null) {
+                    // Dog found, display its details
+                    System.out.println("Dog Found!");
+                    System.out.println("Microchip Number: " + foundDog.getmicrochipNumber());
+                    System.out.println("Breed: " + foundDog.getbreed());
+                    System.out.println("Weight: " + foundDog.getweight() + " Kg");
+                    System.out.println("Is Hungry: " + (foundDog.getisHungry() ? "Yes" : "No"));
+                } else {
+                    // Dog not found
+                    System.out.println("No dog found with Microchip Number: " + searchId);
+                }
+            }
+            
             if (userSelection == 5) { // Quit
 
                 System.out.println("Student Application Closing - Goodbye!");
@@ -61,6 +98,7 @@ public class Main {
                 break; // Break out of display menu Infinite loop
 
             }
+
         }
     }
 }

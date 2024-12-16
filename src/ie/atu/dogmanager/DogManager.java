@@ -27,6 +27,17 @@ public class DogManager {
 
     }
 
+    public boolean deleteDog(int microchipNumber) {
+        for (int i = 0; i < dogs.length; i++) {
+            if (dogs[i] != null && dogs[i].getmicrochipNumber() == microchipNumber) {
+                dogs[i] = null;  // Set the slot to null to "delete" the dog
+                return true;  // Return true if deletion was successful
+            }
+        }
+        return false;  // Return false if no dog was found with that microchip number
+    }
+    
+
 
 // Method to find the total number of Watch objects in the array
 public int totalDogs() {
@@ -43,7 +54,20 @@ public int totalDogs() {
     // Return total number of Watch objects
     return total;
 }
+
+    // Method to search for a dog by its microchip number
+    public Dog searchDogById(int microchipNumber) {
+        // Loop through the array of dogs
+        for (int i = 0; i < dogs.length; i++) {
+            if (dogs[i] != null && dogs[i].getmicrochipNumber() == microchipNumber) {
+                System.out.println("Dog found with microchip number: " + dogs[i].getmicrochipNumber());  // Debug message
+                return dogs[i]; // Return the dog if found
+            }
+        }
+        return null; // Return null if no dog is found with that ID
+    }
 }
+
 
 
 
