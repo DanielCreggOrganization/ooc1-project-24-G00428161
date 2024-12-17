@@ -1,56 +1,60 @@
 package ie.atu.dogmanager;
 
 public class Dog extends Animal {
-    // Instance Variables
-    private int microchipNumber; // Unique ID
+
+    // Fields (Attributes)
+    private int microchipNumber;
     private String breed;
     private float weight;
-    private boolean isHungry; // true if hungry, false if not
+    private boolean isHungry;
 
-    // Constructor (Fixed version)
+    // Constructor
     public Dog(int microchipNumber, String breed, float weight, boolean isHungry) {
         this.microchipNumber = microchipNumber;
         this.breed = breed;
-        this.weight = weight; 
+        this.weight = weight;
         this.isHungry = isHungry;
     }
 
-    // Getter and Setter Methods
+    // Getter Methods (Encapsulation)
     public int getmicrochipNumber() {
-        return this.microchipNumber;
+        return microchipNumber;
     }
 
     public String getbreed() {
-        return this.breed;
+        return breed;
     }
 
     public float getweight() {
-        return this.weight;
+        return weight;
     }
 
     public boolean getisHungry() {
-        return this.isHungry;
+        return isHungry;
     }
 
+    // Overridden method from the abstract Animal class
+    @Override
+    public String showColour() {
+        // Assuming all dogs are the same color for now. You can change this if you want to ask the user for color.
+        return "Brown"; // Default color
+    }
+
+    // Setters (Optional, if you want to allow changes to the attributes)
     public void setMicrochipNumber(int microchipNumber) {
         this.microchipNumber = microchipNumber;
     }
 
-    public void setbreed(String breed) {
+    public void setBreed(String breed) {
         this.breed = breed;
     }
 
-    public void setweight(float weight) {
+    public void setWeight(float weight) {
         this.weight = weight;
     }
 
-    public void setisHungry(boolean isHungry) {
+    public void setIsHungry(boolean isHungry) {
         this.isHungry = isHungry;
     }
-
-    // Overridden method from Animal class
-    @Override
-    public String showColour() {
-        return "Black"; // Example color
-    }
 }
+
