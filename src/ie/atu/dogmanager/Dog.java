@@ -7,6 +7,8 @@ public class Dog extends Animal {
     private String breed;
     private float weight;
     private boolean isHungry;
+    private String lastVetVisit;
+    private String vaccinationStatus;
 
     // Constructor
     public Dog(int microchipNumber, String breed, float weight, boolean isHungry) {
@@ -14,6 +16,8 @@ public class Dog extends Animal {
         this.breed = breed;
         this.weight = weight;
         this.isHungry = isHungry;
+        this.lastVetVisit = "Not Available";  // Default value
+        this.vaccinationStatus = "Not Available";  // Default value
     }
 
     // Getter Methods (Encapsulation)
@@ -33,14 +37,15 @@ public class Dog extends Animal {
         return isHungry;
     }
 
-    // Overridden method from the abstract Animal class
-    @Override
-    public String showColour() {
-        // Assuming all dogs are the same color for now. You can change this if you want to ask the user for color.
-        return "Brown"; // Default color
+    public String getLastVetVisit() {
+        return lastVetVisit;
     }
 
-    // Setters (Optional, if you want to allow changes to the attributes)
+    public String getVaccinationStatus() {
+        return vaccinationStatus;
+    }
+
+    // Setter Methods
     public void setMicrochipNumber(int microchipNumber) {
         this.microchipNumber = microchipNumber;
     }
@@ -56,5 +61,18 @@ public class Dog extends Animal {
     public void setIsHungry(boolean isHungry) {
         this.isHungry = isHungry;
     }
-}
 
+    public void setLastVetVisit(String lastVetVisit) {
+        this.lastVetVisit = lastVetVisit;
+    }
+
+    public void setVaccinationStatus(String vaccinationStatus) {
+        this.vaccinationStatus = vaccinationStatus;
+    }
+
+    // Overridden method from the abstract Animal class
+    @Override
+    public String showColour() {
+        return "Brown"; // Default color, can be modified
+    }
+}

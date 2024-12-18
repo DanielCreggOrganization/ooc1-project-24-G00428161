@@ -71,6 +71,8 @@ public class Main {
                         System.out.println("Breed: " + foundDog.getbreed());
                         System.out.println("Weight: " + foundDog.getweight() + " Kg");
                         System.out.println("The dog is hungry: " + (foundDog.getisHungry() ? "Yes" : "No"));
+                        System.out.println("Last Vet Visit: " + foundDog.getLastVetVisit());
+                        System.out.println("Vaccination Status: " + foundDog.getVaccinationStatus());
                     } else {
                         // Dog not found
                         System.out.println("No dog found with Microchip Number: " + searchId);
@@ -99,7 +101,21 @@ public class Main {
                     }
                     break;
 
-                case 8: // Quit
+                case 8: // Update Dog Medical Details
+                    System.out.println("Enter Dog Microchip Number to update medical details:");
+                    int microchipNumberToUpdateMedical = userInput.nextInt();
+                    
+                    // Call the update medical details method in DogManager
+                    boolean updateMedicalSuccess = dogManagerObject.updateDogMedicalDetails(microchipNumberToUpdateMedical);
+
+                    if (updateMedicalSuccess) {
+                        System.out.println("Dog medical details updated successfully!");
+                    } else {
+                        System.out.println("No dog found with Microchip Number: " + microchipNumberToUpdateMedical);
+                    }
+                    break;
+
+                case 9: // Quit
                     System.out.println("Student Application Closing - Goodbye!");
                     // Close the User Input Scanner
                     userInput.close();
@@ -112,20 +128,33 @@ public class Main {
     }
 
     public static void printMenu() {
-        System.out.println("\n========================================");
-        System.out.println("\033[1;35m||\t   Dog Management App v1.0    \033[0m||");  // Purple for the title
-        System.out.println("========================================");
-        System.out.println("\033[1;36m(1)\033[0m Add a Dog");  // Cyan for options
-        System.out.println("\033[1;36m(2)\033[0m Delete a Dog");
-        System.out.println("\033[1;36m(3)\033[0m Show Total Dogs");
-        System.out.println("\033[1;36m(4)\033[0m Search for Dog by ID");
-        System.out.println("\033[1;36m(5)\033[0m View All Dogs");
-        System.out.println("\033[1;36m(6)\033[0m Print Dog Outline");
-        System.out.println("\033[1;36m(7)\033[0m Update Dog Details");
-        System.out.println("\033[1;36m(8)\033[0m Quit");
-        System.out.println("========================================");
-        System.out.print("\n\033[1;32mSelect an option (1-8): \033[0m");  // Green for selection prompt
-    }
+        // Clear the screen (may not work in all environments but it helps in most terminals)
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     
+        // Title with color
+        System.out.println("\033[1;33m========================================\033[0m");
+        System.out.println("\033[1;35m||   \033[1;32mDog Management App v1.0\033[1;35m   ||\033[0m");
+        System.out.println("\033[1;33m========================================\033[0m");
+    
+        // Decorative line
+        System.out.println("\033[1;36m-------------------------------------------------------------\033[0m");
+    
+        // Menu options with emojis and colors
+        System.out.println("\033[1;36m(1)\033[0m \033[1;37mAdd a Dog \033[0m\033[1;32m🐶\033[0m");
+        System.out.println("\033[1;36m(2)\033[0m \033[1;37mDelete a Dog \033[0m\033[1;31m❌\033[0m");
+        System.out.println("\033[1;36m(3)\033[0m \033[1;37mShow Total Dogs \033[0m\033[1;34m📊\033[0m");
+        System.out.println("\033[1;36m(4)\033[0m \033[1;37mSearch for Dog by ID \033[0m\033[1;34m🔍\033[0m");
+        System.out.println("\033[1;36m(5)\033[0m \033[1;37mView All Dogs \033[0m\033[1;35m👀\033[0m");
+        System.out.println("\033[1;36m(6)\033[0m \033[1;37mPrint Dog Outline \033[0m\033[1;32m📋\033[0m");
+        System.out.println("\033[1;36m(7)\033[0m \033[1;37mUpdate Dog Details \033[0m\033[1;33m✏️\033[0m");
+        System.out.println("\033[1;36m(8)\033[0m \033[1;37mUpdate Dog Medical Details \033[0m\033[1;33m💉\033[0m");
+        System.out.println("\033[1;36m(9)\033[0m \033[1;37mQuit \033[0m\033[1;31m🚪\033[0m");
+    
+        // Another decorative line
+        System.out.println("\033[1;36m-------------------------------------------------------------\033[0m");
+    
+        // Green prompt for user selection
+        System.out.print("\n\033[1;32mSelect an option (1-9): \033[0m");
     }
-
+}

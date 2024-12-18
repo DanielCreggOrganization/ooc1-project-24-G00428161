@@ -46,19 +46,21 @@ public class DogManager {
 
     // Method to show all dogs in the system
     public void showAllDogs() {
-        System.out.printf("%-15s%-20s%-15s%-10s\n", "Microchip", "Breed", "Weight (kg)", "Hungry");
-        System.out.println("------------------------------------------------------------");
+        System.out.printf("%-15s%-20s%-15s%-10s%-20s%-20s\n", "Microchip", "Breed", "Weight (kg)", "Hungry", "Last Vet Visit", "Vaccination Status");
+        System.out.println("--------------------------------------------------------------------------------------------------");
 
         for (Dog dog : dogs) {
-            System.out.printf("%-15d%-20s%-15.2f%-10s\n",
+            System.out.printf("%-15d%-20s%-15.2f%-10s%-20s%-20s\n",
                     dog.getmicrochipNumber(),
                     dog.getbreed(),
                     dog.getweight(),
-                    dog.getisHungry() ? "Yes" : "No");
+                    dog.getisHungry() ? "Yes" : "No",
+                    dog.getLastVetVisit(),
+                    dog.getVaccinationStatus());
         }
     }
 
-    // Method to update a dog's details
+    // Method to update a dog's details (breed, weight, hunger status)
     public boolean updateDogDetails(int microchipNumber) {
         for (Dog dog : dogs) {
             if (dog.getmicrochipNumber() == microchipNumber) {
@@ -72,11 +74,34 @@ public class DogManager {
                 float newWeight = userInput.nextFloat();
                 dog.setWeight(newWeight);
 
+                // Fix: Ask for "Yes" or "No" and convert it to a boolean
                 System.out.println("Is the dog hungry? (current: " + (dog.getisHungry() ? "Yes" : "No") + ")");
-                boolean isHungry = userInput.nextBoolean();
+                String hungerInput = userInput.next();  // Capture the input as a string
+                boolean isHungry = hungerInput.equalsIgnoreCase("Yes");  // Convert "Yes" or "No" to boolean
                 dog.setIsHungry(isHungry);
 
                 System.out.println("Dog details updated successfully!");
+                return true; // Update successful
+            }
+        }
+        return false; // If no dog is found with the given microchip number
+    }
+
+    // Method to update the medical details of a dog (last vet visit, vaccination status)
+    public boolean updateDogMedicalDetails(int microchipNumber) {
+        for (Dog dog : dogs) {
+            if (dog.getmicrochipNumber() == microchipNumber) {
+                Scanner userInput = new Scanner(System.in);
+
+                System.out.println("Enter new last vet visit date (current: " + dog.getLastVetVisit() + "):");
+                String newVetVisit = userInput.nextLine();
+                dog.setLastVetVisit(newVetVisit);
+
+                System.out.println("Enter new vaccination status (current: " + dog.getVaccinationStatus() + "):");
+                String newVaccinationStatus = userInput.nextLine();
+                dog.setVaccinationStatus(newVaccinationStatus);
+
+                System.out.println("Dog medical details updated successfully!");
                 return true; // Update successful
             }
         }
