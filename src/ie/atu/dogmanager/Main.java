@@ -18,34 +18,43 @@ public class Main {
             printMenu();
 
             userSelection = userInput.nextInt();
+            userInput.nextLine();  // Consume the leftover newline
 
             // Switch or if-else to handle user input
             switch (userSelection) {
                 case 1: // Add Dog
                     System.out.println("Enter Dog Microchip Number");
                     int microchipNumber = userInput.nextInt();
+                    userInput.nextLine(); // Consume the leftover newline
                     System.out.println("Enter Dog Breed");
-                    String breed = userInput.next();
+                    String breed = userInput.nextLine();
                     System.out.println("Enter Dog weight (Kg)");
                     float weight = userInput.nextFloat();
+                    userInput.nextLine(); // Consume the leftover newline
                     System.out.println("Is the Dog hungry? (Yes/No):");
-                    String hungerInput = userInput.next();  // Capture the input (Yes/No)
-
-                    // Convert the "Yes" or "No" input to a boolean
+                    String hungerInput = userInput.nextLine();  // Capture the input (Yes/No)
                     boolean isHungry = hungerInput.equalsIgnoreCase("Yes");
 
+                    // Asking for last vet visit
+                    System.out.println("Enter the last vet visit date (e.g., '2023-12-10'):");
+                    String lastVetVisit = userInput.nextLine();
+
+                    // Asking for vaccination status
+                    System.out.println("Enter the vaccination status (Vaccinated/Not Vaccinated):");
+                    String vaccinationStatus = userInput.nextLine();
+
                     // Create Dog Object
-                    Dog myDog = new Dog(microchipNumber, breed, weight, isHungry);
+                    Dog myDog = new Dog(microchipNumber, breed, weight, isHungry, lastVetVisit, vaccinationStatus);
                     dogManagerObject.addDog(myDog);
                     break;
                 
                 case 2: // Delete Dog
                     System.out.println("Enter Dog Microchip Number to delete:");
                     int microchipNumberToDelete = userInput.nextInt(); // Get the microchip number from the user
+                    userInput.nextLine();  // Consume the leftover newline
 
                     // Delete the dog using DogManager's delete method
                     boolean success = dogManagerObject.deleteDog(microchipNumberToDelete);
-
                     if (success) {
                         System.out.println("Dog with microchip number " + microchipNumberToDelete + " has been deleted.");
                     } else {
@@ -60,10 +69,10 @@ public class Main {
                 case 4: // Search for Dog by ID
                     System.out.println("Enter Dog Microchip Number to search:");
                     int searchId = userInput.nextInt(); // Get the microchip number from the user
+                    userInput.nextLine();  // Consume the leftover newline
 
                     // Search for the dog using DogManager's search method
                     Dog foundDog = dogManagerObject.searchDogById(searchId);
-
                     if (foundDog != null) {
                         // Dog found, display its details
                         System.out.println("Dog Found!");
@@ -90,10 +99,10 @@ public class Main {
                 case 7: // Update Dog Details
                     System.out.println("Enter Dog Microchip Number to update:");
                     int microchipNumberToUpdate = userInput.nextInt();
+                    userInput.nextLine();  // Consume the leftover newline
                     
                     // Call the update method in DogManager to update the dog details
                     boolean updateSuccess = dogManagerObject.updateDogDetails(microchipNumberToUpdate);
-                    
                     if (updateSuccess) {
                         System.out.println("Dog details updated successfully!");
                     } else {
@@ -104,10 +113,10 @@ public class Main {
                 case 8: // Update Dog Medical Details
                     System.out.println("Enter Dog Microchip Number to update medical details:");
                     int microchipNumberToUpdateMedical = userInput.nextInt();
+                    userInput.nextLine();  // Consume the leftover newline
                     
                     // Call the update medical details method in DogManager
                     boolean updateMedicalSuccess = dogManagerObject.updateDogMedicalDetails(microchipNumberToUpdateMedical);
-
                     if (updateMedicalSuccess) {
                         System.out.println("Dog medical details updated successfully!");
                     } else {
@@ -117,7 +126,6 @@ public class Main {
 
                 case 9: // Quit
                     System.out.println("Student Application Closing - Goodbye!");
-                    // Close the User Input Scanner
                     userInput.close();
                     return; // Exit the program
 
@@ -128,33 +136,19 @@ public class Main {
     }
 
     public static void printMenu() {
-        // Clear the screen (may not work in all environments but it helps in most terminals)
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    
-        // Title with color
-        System.out.println("\033[1;33m========================================\033[0m");
-        System.out.println("\033[1;35m||   \033[1;32mDog Management App v1.0\033[1;35m   ||\033[0m");
-        System.out.println("\033[1;33m========================================\033[0m");
-    
-        // Decorative line
-        System.out.println("\033[1;36m-------------------------------------------------------------\033[0m");
-    
-        // Menu options with emojis and colors
-        System.out.println("\033[1;36m(1)\033[0m \033[1;37mAdd a Dog \033[0m\033[1;32m🐶\033[0m");
-        System.out.println("\033[1;36m(2)\033[0m \033[1;37mDelete a Dog \033[0m\033[1;31m❌\033[0m");
-        System.out.println("\033[1;36m(3)\033[0m \033[1;37mShow Total Dogs \033[0m\033[1;34m📊\033[0m");
-        System.out.println("\033[1;36m(4)\033[0m \033[1;37mSearch for Dog by ID \033[0m\033[1;34m🔍\033[0m");
-        System.out.println("\033[1;36m(5)\033[0m \033[1;37mView All Dogs \033[0m\033[1;35m👀\033[0m");
-        System.out.println("\033[1;36m(6)\033[0m \033[1;37mPrint Dog Outline \033[0m\033[1;32m📋\033[0m");
-        System.out.println("\033[1;36m(7)\033[0m \033[1;37mUpdate Dog Details \033[0m\033[1;33m✏️\033[0m");
-        System.out.println("\033[1;36m(8)\033[0m \033[1;37mUpdate Dog Medical Details \033[0m\033[1;33m💉\033[0m");
-        System.out.println("\033[1;36m(9)\033[0m \033[1;37mQuit \033[0m\033[1;31m🚪\033[0m");
-    
-        // Another decorative line
-        System.out.println("\033[1;36m-------------------------------------------------------------\033[0m");
-    
-        // Green prompt for user selection
-        System.out.print("\n\033[1;32mSelect an option (1-9): \033[0m");
+        System.out.println("\n========================================");
+        System.out.println("\033[1;35m||\t   Dog Management App v1.0    \033[0m||");  // Purple for the title
+        System.out.println("========================================");
+        System.out.println("\033[1;36m(1)\033[0m Add a Dog");  // Cyan for options
+        System.out.println("\033[1;36m(2)\033[0m Delete a Dog");
+        System.out.println("\033[1;36m(3)\033[0m Show Total Dogs");
+        System.out.println("\033[1;36m(4)\033[0m Search for Dog by ID");
+        System.out.println("\033[1;36m(5)\033[0m View All Dogs");
+        System.out.println("\033[1;36m(6)\033[0m Print Dog Outline");
+        System.out.println("\033[1;36m(7)\033[0m Update Dog Details");
+        System.out.println("\033[1;36m(8)\033[0m Update Dog Medical Details");
+        System.out.println("\033[1;36m(9)\033[0m Quit");
+        System.out.println("========================================");
+        System.out.print("\n\033[1;32mSelect an option (1-9): \033[0m");  // Green for selection prompt
     }
 }

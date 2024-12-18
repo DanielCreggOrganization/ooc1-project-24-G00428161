@@ -7,20 +7,20 @@ public class Dog extends Animal {
     private String breed;
     private float weight;
     private boolean isHungry;
-    private String lastVetVisit;
-    private String vaccinationStatus;
+    private String lastVetVisit;  // New field for the last vet visit date
+    private String vaccinationStatus;  // New field for vaccination status
 
     // Constructor
-    public Dog(int microchipNumber, String breed, float weight, boolean isHungry) {
+    public Dog(int microchipNumber, String breed, float weight, boolean isHungry, String lastVetVisit, String vaccinationStatus) {
         this.microchipNumber = microchipNumber;
         this.breed = breed;
         this.weight = weight;
         this.isHungry = isHungry;
-        this.lastVetVisit = "Not Available";  // Default value
-        this.vaccinationStatus = "Not Available";  // Default value
+        this.lastVetVisit = lastVetVisit;
+        this.vaccinationStatus = vaccinationStatus;
     }
 
-    // Getter Methods (Encapsulation)
+    // Getter Methods
     public int getmicrochipNumber() {
         return microchipNumber;
     }
@@ -45,11 +45,7 @@ public class Dog extends Animal {
         return vaccinationStatus;
     }
 
-    // Setter Methods
-    public void setMicrochipNumber(int microchipNumber) {
-        this.microchipNumber = microchipNumber;
-    }
-
+    // Setter Methods (Optional for updates)
     public void setBreed(String breed) {
         this.breed = breed;
     }
@@ -70,9 +66,9 @@ public class Dog extends Animal {
         this.vaccinationStatus = vaccinationStatus;
     }
 
-    // Overridden method from the abstract Animal class
+    // Overridden method from the Animal class
     @Override
     public String showColour() {
-        return "Brown"; // Default color, can be modified
+        return "Brown"; // Default color
     }
 }
