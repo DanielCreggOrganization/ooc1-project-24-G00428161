@@ -18,19 +18,19 @@ public class Main {
             printMenu();
 
             userSelection = userInput.nextInt();
-            userInput.nextLine();  // Consume the leftover newline
+            userInput.nextLine();  
 
             // Switch or if-else to handle user input
             switch (userSelection) {
                 case 1: // Add Dog
                     System.out.println("Enter Dog Microchip Number");
                     int microchipNumber = userInput.nextInt();
-                    userInput.nextLine(); // Consume the leftover newline
+                    userInput.nextLine(); 
                     System.out.println("Enter Dog Breed");
                     String breed = userInput.nextLine();
                     System.out.println("Enter Dog weight (Kg)");
                     float weight = userInput.nextFloat();
-                    userInput.nextLine(); // Consume the leftover newline
+                    userInput.nextLine(); 
                     System.out.println("Is the Dog hungry? (Yes/No):");
                     String hungerInput = userInput.nextLine();  // Capture the input (Yes/No)
                     boolean isHungry = hungerInput.equalsIgnoreCase("Yes");
@@ -69,7 +69,7 @@ public class Main {
                 case 4: // Search for Dog by ID
                     System.out.println("Enter Dog Microchip Number to search:");
                     int searchId = userInput.nextInt(); // Get the microchip number from the user
-                    userInput.nextLine();  // Consume the leftover newline
+                    userInput.nextLine();  
 
                     // Search for the dog using DogManager's search method
                     Dog foundDog = dogManagerObject.searchDogById(searchId);
@@ -99,7 +99,7 @@ public class Main {
                 case 7: // Update Dog Details
                     System.out.println("Enter Dog Microchip Number to update:");
                     int microchipNumberToUpdate = userInput.nextInt();
-                    userInput.nextLine();  // Consume the leftover newline
+                    userInput.nextLine();  
                     
                     // Call the update method in DogManager to update the dog details
                     boolean updateSuccess = dogManagerObject.updateDogDetails(microchipNumberToUpdate);

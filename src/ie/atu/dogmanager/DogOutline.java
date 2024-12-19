@@ -1,7 +1,7 @@
 package ie.atu.dogmanager;
 
 public class DogOutline {
-    // Method to print the dog outline in ASCII art
+    // Method to print the dog outline
     public static void printDogOutline() {
         System.out.println("   / \\__");
         System.out.println("  (    @\\___");
